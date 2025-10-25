@@ -49,7 +49,6 @@ class TaskServerApi : TaskInterface {
         }
     }
 
-
     override fun addTask(task: TaskModel, callback: MyCustomCallback<TaskModel>) {
         try {
             val cal = Calendar.getInstance()

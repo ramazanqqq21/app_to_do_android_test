@@ -13,7 +13,6 @@ object RetrofitService {
     private const val URL_MOCKAPI:String = "https://твой_токен_здесь.mockapi.io/"
     var retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(URL_MOCKAPI)
-        //сериализация происходит за счет установки фабрики (в данном случае за сериализацию отвечате Gson)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

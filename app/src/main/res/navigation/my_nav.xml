@@ -9,5 +9,14 @@
         android:id="@+id/taskFragment2"
         android:name="com.ramazan.app.view.fragments.TaskFragment"
         android:label="fragment_task_list"
-        tools:layout="@layout/fragment_task_list" />
+        tools:layout="@layout/fragment_task_list" >
+        <action
+            android:id="@+id/action_taskFragment2_to_addUpdateTaskFragment"
+            app:destination="@id/addUpdateTaskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addUpdateTaskFragment"
+        android:name="com.ramazan.app.view.fragments.AddUpdateTaskFragment"
+        android:label="fragment_add_update_task"
+        tools:layout="@layout/fragment_add_update_task" />
 </navigation>

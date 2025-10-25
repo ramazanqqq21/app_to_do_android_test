@@ -1,8 +1,7 @@
+package com.ramazan.app.model.tasks
 
 import android.util.Log
 import com.ramazan.app.model.MyCustomCallback
-import com.ramazan.app.model.tasks.TaskInterface
-import com.ramazan.app.model.tasks.TaskModel
 import io.paperdb.Paper
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -13,6 +12,7 @@ import java.util.UUID
 class TaskLocalApi: TaskInterface {
     private val TASK_TABLE = "tasks"
     private val TASK_IS_NOT_DEFINE = "TASK IS NOT DEFINE"
+
     override fun getTaskById(id: String, callback: MyCustomCallback<TaskModel>) {
         try {
             val tasks = Paper.book().read<List<TaskModel>>(TASK_TABLE) ?: emptyList()

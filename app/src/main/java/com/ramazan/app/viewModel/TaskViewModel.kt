@@ -1,6 +1,6 @@
 package com.ramazan.app.viewModel
 
-import TaskLocalApi
+import com.ramazan.app.model.tasks.TaskLocalApi
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -31,6 +31,7 @@ class TaskViewModel:
             field = value
             _tasks.value = _tasks.value
         }
+
     init {
         localRepo.getTasks(this)
         if (isConnected){
@@ -62,6 +63,10 @@ class TaskViewModel:
         }
     }
 
+    fun setCurrentTask(task: TaskModel?){
+        _currentTask.value = task
+    }
+
     fun addTask(task: TaskModel) {
         if (isConnected){
             serverRepo.addTask(task, object : MyCustomCallback<TaskModel> {
@@ -73,6 +78,7 @@ class TaskViewModel:
             _notifyMsg.value = "NO INTERNET CONNECTION"
         }
     }
+
     fun updateTask(task: TaskModel) {
         task.id = _currentTask.value?.id.toString()
         task.timeCreated = _currentTask.value?.timeCreated.toString()
@@ -108,12 +114,15 @@ class TaskViewModel:
             localRepo.getTasks(this)
         }
     }
+
     override fun onSuccess(listModel: List<TaskModel>) {
         _tasks.value = listModel
     }
+
     override fun onFailure(exception: String) {
         Log.e(TaskViewModel::class.java.simpleName, exception)
     }
+
     override fun notify(msg: String) {
         _notifyMsg.value = msg
     }

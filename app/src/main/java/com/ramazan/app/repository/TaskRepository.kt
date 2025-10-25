@@ -5,6 +5,7 @@ import com.ramazan.app.model.tasks.TaskInterface
 import com.ramazan.app.model.tasks.TaskModel
 
 class TaskRepository(private val taskInterface: TaskInterface) {
+
     fun getTaskById(id: String, callback: MyCustomCallback<TaskModel>) {
         taskInterface.getTaskById(id, callback)
     }
